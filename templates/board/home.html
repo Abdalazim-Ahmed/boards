@@ -1,0 +1,35 @@
+
+{% extends 'base.html' %}  
+
+ <title>{% block title %}Board{% endblock title %}</title>
+
+
+    {% block content %} 
+            
+        <table>
+            <thead>
+                <tr class="tablehead">
+                    <th>Board</th>
+                    <th>Posts</th>
+                    <th>Topic</th>
+                    <th>Last Post</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for board in boards %}
+                <tr class="tabletbody">
+                    <td>
+                        <a class="title" href="{% url 'topic' board.id %}">{{board.name}}</a> <br>
+                        <small class="small">{{board.discribtion}}</small>
+                    </td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td></td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+
+{% endblock content %}

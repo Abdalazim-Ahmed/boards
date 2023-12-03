@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+ {% block title %}Board{% endblock title %}
+
+
+
+
+<br>
+<a href="{% url 'new_topic' board.pk%}"style="height: 20px; width: 50px; background-color:#00f; border-radius: 5px; margin: 5px; color: #fff;">
+add new topic</a>
+<br>
+
+{% block content %}
+
+<table>
+    <thead>
+        <tr class="tablehead">
+            <th>Topic</th>
+            <th>Posts</th>
+            <th>Created_by</th>
+            <th>Last Post</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {%for topic in board.topic.all %}
+ 
+        <tr class="tabletbody">
+            <td>
+            <p><a href="#">{{topic.subject}}</a></p></td>
+            <td>{{post.message}}</td>
+            <td>{{topic.created_by}}</td>
+            <td>{{topic.created_date}}</td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+
+{% endblock content %}

@@ -1,0 +1,48 @@
+<style>
+    .signup, .login{
+        background:#00f;
+        border: 1px #00f solid;
+        color: #fff;
+        border-radius: 5px;
+        padding: 5px;
+
+    }
+
+    .auth{
+        margin-right: 20px;
+    }
+
+    .signup:visited{
+        color: #fff;
+    }
+
+    
+    .login:visited{
+        color: #fff;
+    }
+</style>
+
+
+<header class="header">
+
+    <h3><a href="{% url 'home' %}">Boards</a></h3>
+    {% if user.is_authenticated %}
+    <p>
+    <details title="My account">
+        
+        <ul>
+            <li><a href="{% url 'home' %}">{{user}}</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+            <li><a href="{% url 'change_password' %}">Change Password</a></li>
+        </ul>
+    </details>
+
+    {% else %}
+    <div class="auth">
+
+    <a href="{% url 'signup' %}" class="signup">Sign UP</a>
+    <a href="{% url 'login' %}" class="login">Log In</a>
+    </div>
+    {% endif %}
+   
+</header>
